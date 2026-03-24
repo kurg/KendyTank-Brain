@@ -13,8 +13,11 @@ def start_brain():
         show_menu()
         choice = input("\nSelect an option (1-3): ")
         
+        # Everything below here is indented 8 spaces to stay inside the 'while' loop
         if choice == "1":
-            print("\n[STATUS]: All systems nominal. Temperature in Asunción is perfect for coding.")
+            print("\n--- OPENING LOGBOOK ---")
+            with open("logbook.txt", "r") as file:
+                print(file.read())
         elif choice == "2":
             print("\n[TANK]: Searching for Scavenger connection... (Simulated)")
         elif choice == "3":

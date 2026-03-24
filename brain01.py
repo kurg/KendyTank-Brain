@@ -1,17 +1,27 @@
-# Kevin van Rensburg, 24 March 2026 - KendyTank-Brain v0.01
-# Fresh start for the KendyVerse-Unity Offline AI
+# Kendy-Brain v0.02 - The Workshop Menu
 
-def start_brain():
-    print("---------------------------------------")
-    print("Kendy-Brain: System Initializing...")
-    print("---------------------------------------")
-    print("Status: Offline Mode Active")
-    print("Location: Asunción, Paraguay")
-    print("---------------------------------------")
+def show_menu():
+    print("\n--- KENDYVERSE WORKSHOP ---")
+    print("1. Check System Status")
+    print("2. Connect to Scavenger Tank")
+    print("3. Exit Brain")
     
-    user_name = input("Please Identify yourself : ")
-    print(f"Welcome back, {user_name}. I am the new core of KendyVerse.")
-    print("I am currently empty, but tonight we begin.")
+def start_brain():
+    print("Kendy-Brain: Online.")
+    
+    while True:
+        show_menu()
+        choice = input("\nSelect an option (1-3): ")
+        
+        if choice == "1":
+            print("\n[STATUS]: All systems nominal. Temperature in Asunción is perfect for coding.")
+        elif choice == "2":
+            print("\n[TANK]: Searching for Scavenger connection... (Simulated)")
+        elif choice == "3":
+            print("\nShutting down. See you in the KendyVerse!")
+            break
+        else:
+            print("\nInvalid choice. Please try again.")
 
 if __name__ == "__main__":
     start_brain()

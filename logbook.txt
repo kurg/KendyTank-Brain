@@ -1,4 +1,4 @@
 --- KENDYVERSE LOGBOOK ---
 1. Work on Scavenger Tank steering in Unity.
 2. Update the Workbench area in the workshop.
-3. Current Weight: 80.5kg (Holding steady!)
+3. Current Weight: 75kg (Goal reached!)

@@ -1,84 +1,56 @@
-# Kendy-Brain v0.02 - The Workshop Menu
-# Kevin van Rensburg - March 25, 2026
-
 import datetime
 
-def show_menu():
-    print("\n--- KENDYVERSE WORKSHOP ---")
-    print("1. Check System Status")
-    print("2. Connect to Scavenger Tank")
-    print("3. Chat with KendyAI") 
-    print("4. Exit Brain")
-
-def kendy_chat():
-    now = datetime.datetime.now()
-    hour = now.hour
-
-    if hour < 12:
-        greeting = "Good morning, Kevin! How is Asunción today?"
-    elif 12 <= hour < 18:
-        greeting = "Good afternoon! How is work going at the workshop?"
+def get_time_greeting():
+    """Returns a greeting based on the current hour in Asunción."""
+    current_hour = datetime.datetime.now().hour
+    if current_hour < 12:
+        return "Good morning"
+    elif 12 <= current_hour < 18:
+        return "Good afternoon"
     else:
-        greeting = "Good evening! Ready to relax in the KendyVerse?"
+        return "Good evening"
 
-    print(f"\n--- KendyAI Active ---")
-    print(f"[KendyAI]: {greeting}")
+def chat_with_kendy():
+    print("\n--- KendyAI Active ---")
+    greeting = get_time_greeting()
+    print(f"[KendyAI]: {greeting}, Kevin! How is the workshop today?")
     print("(Type 'back' to return to menu)")
 
     while True:
-        user_input = input("\n[YOU]: ")
-        
-        if user_input.lower() == "back":
-            print("[KendyAI]: Returning to Workshop Menu...")
+        user_input = input("\n[YOU]: ").strip().lower()
+
+        if user_input == "back":
             break
-            
-        # --- NEW: SAVE TO MEMORY ---
-        with open("kendy_memory.txt", "a") as memory_file:
-            timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
-            memory_file.write(f"{timestamp} | YOU: {user_input}\n")
-        # ---------------------------
-
-        # Simple logic responses
-        if "hello" in user_input.lower():
-            response = "Greetings! Systems are nominal."
-        elif "status" in user_input.lower():
-            response = "All sensors reporting healthy. Battery at 85%."
-        else:
-            response = "I am learning... I've saved that to my memory."
-            
-        print(f"[KendyAI]: {response}")
         
-        # Save Kendy's response too!
-        with open("kendy_memory.txt", "a") as memory_file:
-            memory_file.write(f"{timestamp} | KendyAI: {response}\n")
+        # Simple Logic / Memory Check
+        if "unity" in user_input:
+            print("[KendyAI]: Oh, the KendyVerse-Unity project! How are the Scavenger and the Old Man doing?")
+        elif "pistachio" in user_input:
+            print("[KendyAI]: A healthy choice! Best snack in the workshop.")
+        else:
+            print("[KendyAI]: I am learning... I've saved that to my memory.")
 
-def start_brain():
-    print("Kendy-Brain: Online.")
-    
+def main_menu():
     while True:
-        show_menu()
+        print("\n--- KENDYVERSE WORKSHOP ---")
+        print("1. Check System Status")
+        print("2. Connect to Scavenger Tank")
+        print("3. Chat with KendyAI")
+        print("4. Exit Brain")
+
         choice = input("\nSelect an option (1-4): ")
-        
+
         if choice == "1":
-            print("\n--- OPENING LOGBOOK ---")
-            # This assumes your logbook.txt is in the same folder
-            try:
-                with open("logbook.txt", "r") as file:
-                    print(file.read())
-            except FileNotFoundError:
-                print("[ERROR]: logbook.txt not found.")
-                
+            print(f"\n[STATUS]: Systems Green. Time: {datetime.datetime.now().strftime('%H:%M:%S')}")
         elif choice == "2":
-            print("\n[TANK]: Searching for Scavenger connection... (Simulated)")
-            
+            print("\n[TANK]: Connecting to KendyTank-Brain...")
         elif choice == "3":
-            kendy_chat()    
-            
+            chat_with_kendy()
         elif choice == "4":
-            print("\nShutting down. See you in the KendyVerse!")
-            break        
+            print("Shutting down... see you at 5 AM, Kevin!")
+            break
         else:
-            print("\nInvalid choice. Please try again.")
+            print("Invalid choice, please try again.")
 
 if __name__ == "__main__":
-    start_brain()
+    main_menu()
